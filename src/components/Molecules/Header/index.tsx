@@ -7,7 +7,8 @@ export const Header = () => {
   return (
     <Container>
       <Image src={Logo} />
-      <Button onPress={() => null} size="s" icon={BsCartFill}/>
+      <Button onPress={() => null} size="m" icon={BsCartFill } />
+      <Button onPress={() => null} size="s" icon={BsCartFill } />
     </Container>
   );
 };

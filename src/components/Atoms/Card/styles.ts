@@ -40,9 +40,3 @@ export const Image = styled.img`
 justify-items: center ;
 `;
 
-
-export const ContainerImage = styled.div`
-
-
-`
-

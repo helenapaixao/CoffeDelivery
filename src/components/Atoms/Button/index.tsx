@@ -1,4 +1,3 @@
-import { ButtonHTMLAttributes } from "react";
 import { Container, IconContainer, Title } from "./styles";
 
 export type ButtonProps = {
@@ -13,7 +12,9 @@ export const Button = ({ size, icon, onPress, title }: ButtonProps) => {
   return (
     <Container onPress={onPress} size={size}>
       {icon && <IconContainer size={size}>{icon}</IconContainer>}
-      <Title size="s" hasIcon={false} >{title}</Title>
+      <Title size="s" hasIcon={true}>
+        {title}
+      </Title>
     </Container>
   );
 };
