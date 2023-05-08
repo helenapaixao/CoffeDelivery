@@ -14,7 +14,7 @@ export const Home = () => {
       <Header />
       <Content>
         <img src={Intro} />
-        <Card src={Coffee} title="Expresso Americano" content="Expresso diluído, menos intenso que o tradicional" price="9,90"/>
+        <Card tagText="TRADICIONAL" src={Coffee} title="Expresso Americano" content="Expresso diluído, menos intenso que o tradicional" price="9,90"/>
       </Content>
     </>
   );

@@ -5,11 +5,11 @@ type TagProps = {
   children: React.ReactNode;
 }
 
-export const Tag = ({children}: TagProps) => {
+export const Tag = ( {children}: TagProps) => {
   return (
     <Container>
       <TextTag>
-      {children}
+        {children}
       </TextTag>
     </Container>
   )

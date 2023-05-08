@@ -9,17 +9,17 @@ type CardProps = {
   title: string;
   content: string;
   price: string;
-  image: ImageProps;
-  src: string
+  src: string;
+  tagText: string;
 };
 
-export const Card = ({ title, content, src, price}: CardProps) => {
+export const Card = ({ title, content, src, price, tagText}: CardProps) => {
   return (
     <Container>
       <ContainerImage>
       <Image src={src} height="120" width="120"/>
       </ContainerImage>
-      <Tag>TRADICIONAL</Tag>
+      <Tag>{tagText}</Tag>
       <Title>{title}</Title>
       <SubTitle>{content}</SubTitle>
       <Price>R${price}</Price>
