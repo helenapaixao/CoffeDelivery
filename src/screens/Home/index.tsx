@@ -1,4 +1,3 @@
-import React from "react";
 import { Header } from "../../components/Molecules/Header";
 import Intro from "../../assets/Imagem.svg";
 import { Content } from "./styles";

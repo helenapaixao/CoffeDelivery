@@ -3,7 +3,6 @@ import { Container, IconContainer, Title } from "./styles";
 export type ButtonProps = {
   size: "s" | "m" | "l";
   icon?: React.ReactNode;
-
   onPress: () => void;
   title?: string;
 };
