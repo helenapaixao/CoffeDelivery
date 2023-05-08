@@ -43,6 +43,6 @@ justify-items: center ;
 
 export const ContainerImage = styled.div`
 
-margin-bottom:20px ;
+
 `
 
