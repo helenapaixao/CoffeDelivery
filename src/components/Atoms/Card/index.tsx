@@ -1,10 +1,8 @@
 import React from "react";
 import { Tag } from "../Tag";
-import { Container, SubTitle, Price, Title,ContainerImage } from "./styles";
+import { Container, SubTitle, Price, Title, ContainerImage } from "./styles";
 import { Contador } from "../Contador";
-import {Image} from '../Image'
-import Coffee from '../../../assets/Coffee.svg'
-import { ImageProps } from "../Image";
+import { Image } from "../Image";
 type CardProps = {
   title: string;
   content: string;
@@ -13,18 +11,17 @@ type CardProps = {
   tagText: string;
 };
 
-export const Card = ({ title, content, src, price, tagText}: CardProps) => {
+export const Card = ({ title, content, src, price, tagText }: CardProps) => {
   return (
     <Container>
       <ContainerImage>
-      <Image src={src} height="120" width="120"/>
+        <Image src={src} height="120" width="120" />
       </ContainerImage>
       <Tag>{tagText}</Tag>
       <Title>{title}</Title>
       <SubTitle>{content}</SubTitle>
       <Price>R${price}</Price>
-      <Contador/>
-
+      <Contador />
     </Container>
   );
 };
