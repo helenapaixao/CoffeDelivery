@@ -3,6 +3,7 @@ import { ButtonProps } from ".";
 
 export const Container = styled.button<ButtonProps>`
   justify-content: center;
+  position: relative;
   width: 100%;
   border-radius: 6px;
   height: 38px;
@@ -20,8 +21,14 @@ export const IconContainer = styled.div<{ size: string }>`
 `;
 
 export const Title = styled.h1<{ size: string; hasIcon: boolean }>`
-  text-align: center;
-  justify-content:center ;
-  margin-left: ${({ hasIcon }) => (hasIcon ? "10px" : "0px")};
-  color: ${({size}) => size === "m" ? "#4B2995" : "#FFFFFF"}; 
+  //text-align: center;
+  //justify-content: center;
+  //margin-left: ${({ hasIcon }) => (hasIcon ? "10px" : "0px")};
+  color:${({ size }) =>
+    size === "s" ? "#4B2995" : size === "m" ? "#4B2995" : "#FFFF"};;
+  display: flex;
+  font-weight: ${({size}) => size === "s" ? "200" : size === "m" ? "400" : "700"};
+  font-family: 'Roboto', sans-serif;
+ // font-size: ${({size}) => size === "s" ? "0px" : size === "m" ? "14px" : "14px"}
+
 `;

@@ -11,7 +11,7 @@ export const Button = ({ size, icon, onPress, title }: ButtonProps) => {
   return (
     <Container onPress={onPress} size={size}>
       {icon && <IconContainer size={size}>{icon}</IconContainer>}
-      <Title size="s" hasIcon={true}>
+      <Title size={size} hasIcon={true}>
         {title}
       </Title>
     </Container>
