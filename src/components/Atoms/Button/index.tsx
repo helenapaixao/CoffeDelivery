@@ -1,17 +1,19 @@
-import {ButtonHTMLAttributes} from 'react';
-import { Container } from './styles';
+import { ButtonHTMLAttributes } from "react";
+import { Container, IconContainer, Title } from "./styles";
 
-type ButtonProps = {
-  children?: React.ReactNode;
-  size: 'small' | 'medium'
-  icon?: JSX.Element;
+export type ButtonProps = {
+  size: "s" | "m" | "l";
+  icon?: React.ReactNode;
 
-}
+  onPress: () => void;
+  title?: string;
+};
 
-export const Button = ({children, size= 'small', icon, ...props}: ButtonProps) => {
+export const Button = ({ size, icon, onPress, title }: ButtonProps) => {
   return (
-    <Container>
-    <button>teste</button>
+    <Container onPress={onPress} size={size}>
+      {icon && <IconContainer size={size}>{icon}</IconContainer>}
+      <Title size="s" hasIcon={false} >{title}</Title>
     </Container>
-  )
-}
+  );
+};

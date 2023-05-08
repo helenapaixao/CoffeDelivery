@@ -2,6 +2,7 @@ import { Tag } from "../Tag";
 import { Container, SubTitle, Price, Title } from "./styles";
 import { Contador } from "../Contador";
 import { Image } from "../Image";
+
 type CardProps = {
   title: string;
   content: string;
