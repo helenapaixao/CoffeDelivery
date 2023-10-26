@@ -7,6 +7,7 @@ import {
   Title,
   Footer,
   TextPrice,
+  DivPrice,
 } from "./styles";
 import { Contador } from "../Contador";
 import { Image } from "../Image";
@@ -29,10 +30,12 @@ export const Card = ({ title, content, src, price, tagText }: CardProps) => {
       </DivTag>
       <Title>{title}</Title>
       <SubTitle>{content}</SubTitle>
-      <TextPrice>
-        R$ <Price>{price}</Price>
-      </TextPrice>
+
       <Footer>
+          <TextPrice>
+            R$ <Price>{price}</Price>
+          </TextPrice>
+
         <Contador />
         <ButtonCart onPress={() => null} icon={<FaShoppingCart />} />
       </Footer>
