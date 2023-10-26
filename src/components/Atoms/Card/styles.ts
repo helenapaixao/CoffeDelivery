@@ -56,4 +56,5 @@ export const TextPrice = styled.h2`
 export const DivTag = styled.div`
 align-items: center;
 justify-content: center ;
+display: flex;
 `;

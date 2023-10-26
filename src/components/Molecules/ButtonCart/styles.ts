@@ -11,9 +11,15 @@ export const Container = styled.button<ButtonProps>`
   border: none;
   outline: none;
   background-color: #4B2995;
+    display: flex; /* Make the button a flex container */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
 `;
 
 export const IconContainer = styled.div`
+  display: flex; /* Make the container a flex container */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
   border: none;
   outline: none;
   color: #FFF;
@@ -24,7 +30,7 @@ export const IconContainer = styled.div`
 `;
 
 export const Title = styled.h1<{ size: string; hasIcon: boolean }>`
-
+ margin-left: ${({ hasIcon }) => (hasIcon ? "8px" : "0px")}; 
   margin-left: ${({ hasIcon }) => (hasIcon ? "27px" : "0px")};
   color: ${({ size }) =>
     size === "s" ? "#4B2995" : size === "m" ? "#4B2995" : "#FFFF"};
