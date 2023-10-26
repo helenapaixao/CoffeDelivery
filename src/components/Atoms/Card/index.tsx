@@ -10,7 +10,8 @@ import {
 } from "./styles";
 import { Contador } from "../Contador";
 import { Image } from "../Image";
-
+import { ButtonCart } from "../../Molecules/ButtonCart";
+import { FaShoppingCart } from 'react-icons/fa';
 type CardProps = {
   title: string;
   content: string;
@@ -33,6 +34,7 @@ export const Card = ({ title, content, src, price, tagText }: CardProps) => {
       </TextPrice>
       <Footer>
         <Contador />
+        <ButtonCart onPress={() => null} icon={<FaShoppingCart/>}/>
       </Footer>
     </Container>
   );
