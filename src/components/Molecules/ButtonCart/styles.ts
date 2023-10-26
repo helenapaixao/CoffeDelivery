@@ -11,15 +11,15 @@ export const Container = styled.button<ButtonProps>`
   border: none;
   outline: none;
   background-color: #4B2995;
-    display: flex; /* Make the button a flex container */
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
+    display: flex; 
+  align-items: center; 
+  justify-content: center; 
 `;
 
 export const IconContainer = styled.div`
-  display: flex; /* Make the container a flex container */
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
   border: none;
   outline: none;
   color: #FFF;

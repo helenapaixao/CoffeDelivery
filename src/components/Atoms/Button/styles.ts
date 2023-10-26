@@ -21,7 +21,6 @@ export const IconContainer = styled.div<{ size: string }>`
 `;
 
 export const Title = styled.h1<{ size: string; hasIcon: boolean }>`
-  //text-align: center;
 
   margin-left: ${({ hasIcon }) => (hasIcon ? "27px" : "0px")};
   color: ${({ size }) =>
