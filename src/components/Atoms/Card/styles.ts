@@ -5,8 +5,8 @@ export const Container = styled.div`
   width: 256px;
   height: 350px;
   text-align: center;
-  align-items: center;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
   border-top-left-radius: 6px;
   border-top-right-radius: 36px;
   border-bottom-right-radius: 6px;
@@ -32,15 +32,28 @@ export const Price = styled.h2`
   font-weight: 800;
   font-size: 24px;
   color: #574f4d;
+  margin-right: 5px;
 `;
 
 export const Image = styled.img`
-  justify-items: center;
+  margin: 0 auto;
 `;
 
 export const Footer = styled.div`
+  display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 90px;
-  margin-top: -10px;
+`;
+
+export const TextPrice = styled.h2` 
+  font-family: "Baloo 2", cursive;
+  font-weight: 100;
+  font-size: 24px;
+  color: #574f4d;
+  margin-right: 20px;
+`;
+
+export const DivTag = styled.div`
+align-items: center;
+justify-content: center ;
 `;

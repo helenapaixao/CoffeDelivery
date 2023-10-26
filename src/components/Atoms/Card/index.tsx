@@ -1,5 +1,13 @@
 import { Tag } from "../Tag";
-import { Container, SubTitle, Price, Title, Footer } from "./styles";
+import {
+  Container,
+  DivTag,
+  SubTitle,
+  Price,
+  Title,
+  Footer,
+  TextPrice,
+} from "./styles";
 import { Contador } from "../Contador";
 import { Image } from "../Image";
 
@@ -15,16 +23,17 @@ export const Card = ({ title, content, src, price, tagText }: CardProps) => {
   return (
     <Container>
       <Image src={src} height="120" width="120" />
-
-      <Tag>{tagText}</Tag>
+      <DivTag>
+        <Tag>{tagText}</Tag>
+      </DivTag>
       <Title>{title}</Title>
       <SubTitle>{content}</SubTitle>
-      <Price>R${price}</Price>
+      <TextPrice>
+        R$ <Price>{price}</Price>
+      </TextPrice>
       <Footer>
-      <Contador/>
-
+        <Contador />
       </Footer>
-   
     </Container>
   );
 };
