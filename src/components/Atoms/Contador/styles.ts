@@ -16,6 +16,9 @@ export const Button = styled.button`
   border: none;
   color: #8047f8;
   outline: none;
+  font-size: 16px; 
+  width: 40px; 
+  
 `;
 
 export const Text = styled.span`

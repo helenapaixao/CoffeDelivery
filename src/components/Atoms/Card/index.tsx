@@ -1,8 +1,18 @@
 import { Tag } from "../Tag";
-import { Container, SubTitle, Price, Title } from "./styles";
+import {
+  Container,
+  DivTag,
+  SubTitle,
+  Price,
+  Title,
+  Footer,
+  TextPrice,
+  DivPrice,
+} from "./styles";
 import { Contador } from "../Contador";
 import { Image } from "../Image";
-
+import { ButtonCart } from "../../Molecules/ButtonCart";
+import { FaShoppingCart } from "react-icons/fa";
 type CardProps = {
   title: string;
   content: string;
@@ -15,11 +25,20 @@ export const Card = ({ title, content, src, price, tagText }: CardProps) => {
   return (
     <Container>
       <Image src={src} height="120" width="120" />
-      <Tag>{tagText}</Tag>
+      <DivTag>
+        <Tag>{tagText}</Tag>
+      </DivTag>
       <Title>{title}</Title>
       <SubTitle>{content}</SubTitle>
-      <Price>R${price}</Price>
-      <Contador />
+
+      <Footer>
+          <TextPrice>
+            R$ <Price>{price}</Price>
+          </TextPrice>
+
+        <Contador />
+        <ButtonCart onPress={() => null} icon={<FaShoppingCart />} />
+      </Footer>
     </Container>
   );
 };

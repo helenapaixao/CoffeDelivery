@@ -7,21 +7,30 @@ export const Container = styled.button<ButtonProps>`
   width: 100%;
   border-radius: 6px;
   height: 38px;
-  width: ${({ size }) =>
-    size === "s" ? "38px" : size === "m" ? "143px" : "368px"};
+  width: 38px;
   border: none;
   outline: none;
-  background-color: ${({ size }) =>
-    size === "s" ? "#F1E9C9" : size === "m" ? "#EBE5F9" : "#DBAC2C"};
+  background-color: #4B2995;
+    display: flex; 
+  align-items: center; 
+  justify-content: center; 
 `;
 
-export const IconContainer = styled.div<{ size: string }>`
+export const IconContainer = styled.div`
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
   border: none;
   outline: none;
+  color: #FFF;
+  height:20px ;
+  align-items: center;
+  justify-content: center ;
+  
 `;
 
 export const Title = styled.h1<{ size: string; hasIcon: boolean }>`
-
+ margin-left: ${({ hasIcon }) => (hasIcon ? "8px" : "0px")}; 
   margin-left: ${({ hasIcon }) => (hasIcon ? "27px" : "0px")};
   color: ${({ size }) =>
     size === "s" ? "#4B2995" : size === "m" ? "#4B2995" : "#FFFF"};
