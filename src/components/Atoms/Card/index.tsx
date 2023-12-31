@@ -7,7 +7,6 @@ import {
   Title,
   Footer,
   TextPrice,
-  DivPrice,
 } from "./styles";
 import { Contador } from "../Contador";
 import { Image } from "../Image";
@@ -24,6 +23,7 @@ type CardProps = {
 export const Card = ({ title, content, src, price, tagText }: CardProps) => {
   return (
     <Container>
+    
       <Image src={src} height="120" width="120" />
       <DivTag>
         <Tag>{tagText}</Tag>

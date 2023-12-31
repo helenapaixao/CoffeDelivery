@@ -11,8 +11,8 @@ export const Container = styled.div`
   border-top-right-radius: 36px;
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 36px;
-  display: flex; /* Make the button a flex container */
-  justify-content: space-between; /* Spread the elements apart */
+  display: flex; 
+  justify-content: space-between; 
 `;
 
 export const Title = styled.h1`
@@ -26,7 +26,8 @@ export const SubTitle = styled.h2`
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: #8d8686;
+  color: #8D8686;
+  margin-top: -20px;
 `;
 
 export const Price = styled.span`
@@ -44,6 +45,7 @@ export const Footer = styled.div`
   display: flex;
  align-items: row ;
  justify-content: space-between ;
+ margin-bottom: 20px;
 `;
 
 export const TextPrice = styled.span` 
@@ -51,6 +53,7 @@ export const TextPrice = styled.span`
   font-weight: 100;
   font-size: 14px;
   color: #574f4d;
+  margin-left: 10px;
 `;
 
 export const DivTag = styled.div`
