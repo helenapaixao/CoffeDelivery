@@ -10,27 +10,27 @@ export const Container = styled.button<ButtonProps>`
   width: 38px;
   border: none;
   outline: none;
-  background-color: #4B2995;
-    display: flex; 
-  align-items: center; 
-  justify-content: center; 
+  background-color: #4b2995;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
 `;
 
 export const IconContainer = styled.div`
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   outline: none;
-  color: #FFF;
-  height:20px ;
+  color: #fff;
+  height: 20px;
   align-items: center;
-  justify-content: center ;
-  
+  justify-content: center;
 `;
 
 export const Title = styled.h1<{ size: string; hasIcon: boolean }>`
- margin-left: ${({ hasIcon }) => (hasIcon ? "8px" : "0px")}; 
+  margin-left: ${({ hasIcon }) => (hasIcon ? "8px" : "0px")};
   margin-left: ${({ hasIcon }) => (hasIcon ? "27px" : "0px")};
   color: ${({ size }) =>
     size === "s" ? "#4B2995" : size === "m" ? "#4B2995" : "#FFFF"};
