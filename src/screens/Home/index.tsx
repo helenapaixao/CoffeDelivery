@@ -11,7 +11,7 @@ export const Home = () => {
       <Content>
         <img src={Intro} />
         <Card
-          tagText="TRADICIONAL"
+          tagTexts={["TRADICIONAL", "COM LEITE", "GELADO"]}
           src={Coffee}
           title="Expresso Americano"
           content="Expresso diluído, menos intenso que o tradicional"

@@ -17,16 +17,18 @@ type CardProps = {
   content: string;
   price: string;
   src: string;
-  tagText: string;
+  tagTexts: string[];
 };
 
-export const Card = ({ title, content, src, price, tagText }: CardProps) => {
+export const Card = ({ title, content, src, price, tagTexts }: CardProps) => {
   return (
     <Container>
     
       <Image src={src} height="120" width="120" />
       <DivTag>
-        <Tag>{tagText}</Tag>
+      {tagTexts.map((tagText, index) => (
+          <Tag key={index}>{tagText}</Tag>
+        ))}
       </DivTag>
       <Title>{title}</Title>
       <SubTitle>{content}</SubTitle>
