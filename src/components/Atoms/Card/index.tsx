@@ -23,7 +23,6 @@ type CardProps = {
 export const Card = ({ title, content, src, price, tagTexts }: CardProps) => {
   return (
     <Container>
-    
       <Image src={src} height="120" width="120" />
       <DivTag>
       {tagTexts.map((tagText, index) => (
