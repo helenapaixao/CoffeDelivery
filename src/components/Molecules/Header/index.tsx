@@ -8,16 +8,13 @@ export const Header = () => {
     <Container>
       <Image src={Logo} />
       <div style={{
-        justifyContent: 'flex-end',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '1rem',
-          
+        flexDirection: 'row',
+        marginLeft: '12px' 
       }}>
       <Button hasIcon={true} onPress={() => null} size="m" icon={<FaLocationDot/> } title="Porto Alegre, RS"/>
 
-      <Button hasIcon={true} onPress={() => null} size="s" icon={<BsCartFill/> } />
       </div>
+      <Button hasIcon={true} onPress={() => null} size="s" icon={<BsCartFill/> } />
     </Container>
   );
 };
