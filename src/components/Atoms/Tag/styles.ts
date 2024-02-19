@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background-color: #f1e9c9;
+  background-color: ${(props) => props.theme.colors["yellow-light"]};
   border-radius: 100px;
   width: 81px;
   height: 21px;
@@ -12,7 +12,7 @@ export const Container = styled.div`
 
 export const TextTag = styled.h1`
   font-family: "Baloo 2", cursive;
-  color: #c47f17;
+  color: ${(props) => props.theme.colors["yellow-dark"]};
   font-weight: 700;
   font-size: 10px;
   text-align: center;

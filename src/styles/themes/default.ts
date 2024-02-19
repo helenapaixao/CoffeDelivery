@@ -12,7 +12,7 @@ export const defaultTheme = {
     'base-title': '#272221',
 
     'purple-light': '#EBE5F9',
-    purple: '#8047F8',
+    'purple': '#8047F8',
     'purple-dark': '#4B2995',
 
     'yellow-light': '#F1E9C9',

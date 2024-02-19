@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background-color: #f3f2f2;
+  background-color: ${(props) => props.theme.colors["base-card"]} ;
   width: 256px;
   height: 350px;
   text-align: center;
@@ -19,14 +19,14 @@ export const Title = styled.h1`
   font-family: "Baloo 2", cursive;
   font-weight: 700;
   font-size: 20px;
-  color: #403937;
+  color: ${(props) => props.theme.colors["base-subtitle"]};
 `;
 
 export const SubTitle = styled.h2`
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: #8D8686;
+  color: ${(props) => props.theme.colors["base-label"]};
   margin-top: -20px;
 `;
 
@@ -34,7 +34,7 @@ export const Price = styled.span`
   font-family: "Baloo 2", cursive;
   font-weight: 800;
   font-size: 24px;
-  color: #574f4d;
+  color: ${(props) => props.theme.colors["base-text"]};
 `;
 
 export const Image = styled.img`
@@ -52,7 +52,7 @@ export const TextPrice = styled.span`
   font-family: "Baloo 2", cursive;
   font-weight: 100;
   font-size: 14px;
-  color: #574f4d;
+  color: ${(props) => props.theme.colors["base-text"]};
   margin-left: 10px;
 `;
 

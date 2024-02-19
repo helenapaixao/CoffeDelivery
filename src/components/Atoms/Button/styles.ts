@@ -8,8 +8,7 @@ export const Container = styled.button<ButtonProps>`
     size === "s" ? "38px" : size === "m" ? "143px" : "368px"};
   border: none;
   outline: none;
-  background-color: ${({ size }) =>
-    size === "s" ? "#F1E9C9" : size === "m" ? "#EBE5F9" : "#DBAC2C"};
+  background-color: ${({ size }) => size === "s" ? "#F1E9C9" : size === "m" ? "#EBE5F9" : "#DBAC2C"};
   display: flex; 
   align-items: center; 
 `;

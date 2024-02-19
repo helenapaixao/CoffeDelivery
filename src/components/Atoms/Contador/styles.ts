@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background-color: #e6e5e5;
+  background-color: ${(props) => props.theme.colors["base-button"]} ;
   height: 38px;
   width: 72px;
   align-items: center;
@@ -12,9 +12,9 @@ export const Container = styled.div`
 `;
 
 export const Button = styled.button`
-  background-color: #e6e5e5;
+  background-color: ${(props) => props.theme.colors["base-button"]} ;
   border: none;
-  color: #8047f8;
+  color: ${(props) => props.theme.colors["purple"]};
   outline: none;
   font-size: 16px; 
   width: 40px; 

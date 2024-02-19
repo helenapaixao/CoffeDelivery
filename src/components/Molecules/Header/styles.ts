@@ -1,8 +1,7 @@
-import  styled from 'styled-components';
-
+import styled from "styled-components";
 
 export const Container = styled.div`
- max-width: 1160px;
+  max-width: 1160px;
   padding: 32px 20px;
   margin: 0 auto;
 
@@ -12,6 +11,6 @@ export const Container = styled.div`
 `;
 
 export const Image = styled.img`
-width: 85px;
-height:40px ;
+  width: 85px;
+  height: 40px;
 `;
