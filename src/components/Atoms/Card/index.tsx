@@ -12,31 +12,35 @@ import { Contador } from "../Contador";
 import { Image } from "../Image";
 import { ButtonCart } from "../../Molecules/ButtonCart";
 import { FaShoppingCart } from "react-icons/fa";
-type CardProps = {
-  title: string;
-  content: string;
-  price: string;
-  src: string;
-  tagTexts: string[];
+
+type Props = {
+  coffee: {
+    id: string;
+    title: string;
+    description: string;
+    tags: string[];
+    price: number;
+    image: string;
+  };
 };
 
-export const Card = ({ title, content, src, price, tagTexts }: CardProps) => {
+export const Card = ({ coffee }: Props) => {
   return (
     <Container>
-    
-      <Image src={src} height="120" width="120" />
+      <Image src={coffee.image} height="120" width="120" />
       <DivTag>
-      {tagTexts.map((tagText, index) => (
-          <Tag key={index}>{tagText}</Tag>
+        {coffee.tags.map((tags) => (
+          <Tag key={tags}>{tags}</Tag>
         ))}
       </DivTag>
-      <Title>{title}</Title>
-      <SubTitle>{content}</SubTitle>
+      <Title>{coffee.title}</Title>
+      <SubTitle>{coffee.description}</SubTitle>
 
       <Footer>
-          <TextPrice>
-            R$ <Price>{price}</Price>
-          </TextPrice>
+        <TextPrice>
+          <span>R$</span>
+          <Price>{coffee.price}</Price>
+        </TextPrice>
 
         <Contador />
         <ButtonCart onPress={() => null} icon={<FaShoppingCart />} />
