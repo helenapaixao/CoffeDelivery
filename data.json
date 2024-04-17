@@ -14,7 +14,7 @@
       "description": "Expresso diluído, menos intenso que o tradicional",
       "tags": ["tradicional"],
       "price": 9.90,
-      "image": "/images/coffees/americano.png"
+      "image": "./images/coffees/americano.png"
     },
     {
       "id": "2",
