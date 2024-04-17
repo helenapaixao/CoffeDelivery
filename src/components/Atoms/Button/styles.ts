@@ -5,12 +5,13 @@ export const Container = styled.button<ButtonProps>`
   border-radius: 6px;
   height: 38px;
   width: ${({ size }) =>
-    size === "s" ? "38px" : size === "m" ? "143px" : "368px"};
+    size === "s" ? "38px" : size === "m" ? "210px" : "368px"};
   border: none;
   outline: none;
-  background-color: ${({ size }) => size === "s" ? "#F1E9C9" : size === "m" ? "#EBE5F9" : "#DBAC2C"};
-  display: flex; 
-  align-items: center; 
+  background-color: ${({ size }) =>
+    size === "s" ? "#F1E9C9" : size === "m" ? "#EBE5F9" : "#DBAC2C"};
+  display: flex;
+  align-items: center;
 `;
 
 export const IconContainer = styled.div<{ size: string }>`
@@ -21,6 +22,8 @@ export const IconContainer = styled.div<{ size: string }>`
       size === "s" ? "20px" : size === "m" ? "20px" : "20px"};
     color: ${({ size }) =>
       size === "s" ? "#C47F17" : size === "m" ? "#8047F8" : "#FFFF"};
+    align-items: ${({ size }) =>
+      size === "s" ? "center" : size === "m" ? "center" : "center"};
   }
 `;
 
