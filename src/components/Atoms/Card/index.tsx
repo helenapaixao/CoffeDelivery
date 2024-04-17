@@ -1,13 +1,5 @@
 import { Tag } from "../Tag";
-import {
-  Container,
-  DivTag,
-  SubTitle,
-  Price,
-  Title,
-  Footer,
-  TextPrice,
-} from "./styles";
+import { Container, DivTag, SubTitle, Price, Title, Footer } from "./styles";
 import { Contador } from "../Contador";
 import { Image } from "../Image";
 import { ButtonCart } from "../../Molecules/ButtonCart";
@@ -37,10 +29,10 @@ export const Card = ({ coffee }: Props) => {
       <SubTitle>{coffee.description}</SubTitle>
 
       <Footer>
-        <TextPrice>
+        <Price>
           <span>R$</span>
-          <Price>{coffee.price}</Price>
-        </TextPrice>
+          <span>{coffee.price.toFixed(2)}</span>
+        </Price>
 
         <Contador />
         <ButtonCart onPress={() => null} icon={<FaShoppingCart />} />

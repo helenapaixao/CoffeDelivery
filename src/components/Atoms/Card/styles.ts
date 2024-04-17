@@ -1,64 +1,60 @@
 import styled from "styled-components";
+import { mixins } from "../../../styles/mixins";
 
 export const Container = styled.div`
-  background-color: ${(props) => props.theme.colors["base-card"]} ;
-  width: 256px;
+  background-color: ${(props) => props.theme.colors["base-card"]};
   height: 350px;
+  border-radius: 6px 36px;
   text-align: center;
   display: flex;
   flex-direction: column;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 36px;
-  border-bottom-right-radius: 6px;
-  border-bottom-left-radius: 36px;
-  display: flex; 
-  justify-content: space-between; 
 `;
 
 export const Title = styled.h1`
-  font-family: "Baloo 2", cursive;
-  font-weight: 700;
-  font-size: 20px;
+  ${mixins.fonts.titleS}
+  margin-top: 16px;
   color: ${(props) => props.theme.colors["base-subtitle"]};
 `;
 
 export const SubTitle = styled.h2`
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: ${(props) => props.theme.colors["base-label"]};
-  margin-top: -20px;
-`;
+  margin-top: 8px;
+  width: 100%;
 
-export const Price = styled.span`
-  font-family: "Baloo 2", cursive;
-  font-weight: 800;
-  font-size: 24px;
-  color: ${(props) => props.theme.colors["base-text"]};
+  color: ${({ theme }) => theme.colors["base-label"]};
+  ${mixins.fonts.textS}
 `;
 
 export const Image = styled.img`
-  margin: 0 auto;
+  margin-top: -20px;
+  align-self: center;
 `;
 
 export const Footer = styled.div`
   display: flex;
- align-items: row ;
- justify-content: space-between ;
- margin-bottom: 20px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 56px;
 `;
 
-export const TextPrice = styled.span` 
-  font-family: "Baloo 2", cursive;
-  font-weight: 100;
-  font-size: 14px;
-  color: ${(props) => props.theme.colors["base-text"]};
-  margin-left: 10px;
+export const Price = styled.span`
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  margin-left: 18px;
+
+  span:first-child {
+    ${mixins.fonts.textS};
+    color: ${({ theme }) => theme.colors["base-text"]};
+  }
+
+  span:last-child {
+    ${mixins.fonts.titleM};
+    color: ${({ theme }) => theme.colors["base-text"]};
+  }
 `;
 
 export const DivTag = styled.div`
-align-items: center;
-justify-content: center ;
-display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 `;
-
