@@ -14,3 +14,8 @@ export const Image = styled.img`
   width: 85px;
   height: 40px;
 `;
+
+export const Aside = styled.aside`
+display:flex ;
+gap: 20px;
+`;
