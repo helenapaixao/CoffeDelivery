@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import Logo from "@assets/logo.svg";
 import { Image, Container, Aside } from "./styles";
 import { Button } from "../../Atoms/Button";
 import { BsCartFill } from "react-icons/bs";
 import { FaLocationDot } from "react-icons/fa6";
 import useUserLocation from "../../../hooks/useUserLocation";
+import Logo from "../../../assets/logo.svg";
+
 
 export const Header = () => {
   const userLocation = useUserLocation();

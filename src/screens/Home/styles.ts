@@ -21,7 +21,7 @@ export const CoffeeList = styled.section`
 
   > h2 {
     ${mixins.fonts.titleL}
-    color: ${({ theme }) => theme.colors['base-subtitle']}
+   /*  color: ${({ theme }) => theme.colors['base-subtitle']} */
   }
 
   > div {
