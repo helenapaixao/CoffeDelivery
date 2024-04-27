@@ -11,19 +11,19 @@ type Props = InputHTMLAttributes<HTMLInputElement> & {
 }
 
 export const Input = forwardRef(function Input(
-  {optional, containerProps, error, ...props}: Props,
+  { optional, error, containerProps, onFocus, onBlur, ...rest }: Props,
   ref: LegacyRef<HTMLInputElement>
 ) {
   const [isFocused, setIsFocused] = useState(false)
 
   function handleFocus(event: FocusEvent<HTMLInputElement>) {
     setIsFocused(true)
-    props.onFocus?.(event)
+    onFocus?.(event)
   }
 
   function handleBlur(event: FocusEvent<HTMLInputElement>) {
     setIsFocused(false)
-    props.onBlur?.(event)
+    onBlur?.(event)
   }
 
   return (
@@ -34,8 +34,7 @@ export const Input = forwardRef(function Input(
           onFocus={handleFocus}
           onBlur={handleBlur}
           ref={ref}
-     /*      {...rest} */
-        />
+            {...rest}         />
 
         {optional ? <span>Opcional</span> : null}
       </Container>
