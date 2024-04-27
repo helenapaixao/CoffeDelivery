@@ -55,11 +55,39 @@ export const Heading = styled.div`
 export const AddressForm = styled.div`
   display: grid;
   grid-template-areas:
-    'cep . .'
-    'street street street'
-    'number fullAddress fullAddress'
-    'neighborhood city state';
+    "cep . ."
+    "street street street"
+    "number fullAddress fullAddress"
+    "neighborhood city state";
   grid-template-columns: 200px 1fr 60px;
   grid-gap: 16px 12px;
-`
+`;
 
+export const PaymentContainer = styled(FormsContainer)``;
+
+export const PaymentHeading = styled(Heading)`
+  svg {
+    color: ${({ theme }) => theme.colors.purple};
+  }
+`;
+
+export const PaymentOptions = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+`;
+
+export const CartTotal = styled.div`
+  padding: 40px;
+  border-radius: 6px 36px;
+  background-color: ${({ theme }) => theme.colors["base-card"]};
+  width: 100%;
+  min-width: 448px;
+`;
