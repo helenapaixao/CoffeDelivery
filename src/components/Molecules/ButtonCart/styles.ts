@@ -51,7 +51,10 @@ export const IconContainer = styled.div`
   justify-content: center;
 `;
 
-export const Title = styled.h1<ButtonProps>`
+export const Title = styled.h1<{
+  hasIcon: boolean;
+  size: number;
+}>`
   margin-left: ${({ hasIcon }) => (hasIcon ? '8px' : '0px')};
   color: #574f4d;
   font-family: 'Roboto', sans-serif;
