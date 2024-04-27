@@ -1,20 +1,42 @@
 import styled from "styled-components";
 import { ButtonProps } from ".";
+import { mixins } from "../../../styles/mixins";
 
 export const Container = styled.button<ButtonProps>`
   justify-content: center;
   position: relative;
   width: 100%;
   border-radius: 6px;
-  height: 38px;
-  width: 38px;
+  height: 51px;
+  width: 179px;
   border: none;
   outline: none;
-  background-color: #4b2995;
+  background-color: ${({ isSelected, theme }) =>
+    isSelected ? theme.colors["purple-light"] : "#e6e5e5"};
+  color: ${({ isSelected, theme }) =>
+    isSelected ? theme.colors.purple : theme.colors["base-text"]};
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 20px;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  ${mixins.fonts.buttonM};
+  transition: all 0.2s;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors['purple-light']};
+    border-color: ${({ theme }) => theme.colors.purple};
+    color: ${({ theme }) => theme.colors.purple};
+  }
+
+  color: ${({ theme }) => theme.colors["base-text"]};
+
+  svg {
+    color: ${({ theme }) => theme.colors.purple};
+  }
 `;
 
 export const IconContainer = styled.div`
@@ -29,15 +51,9 @@ export const IconContainer = styled.div`
   justify-content: center;
 `;
 
-export const Title = styled.h1<{ size: string; hasIcon: boolean }>`
-  margin-left: ${({ hasIcon }) => (hasIcon ? "8px" : "0px")};
-  margin-left: ${({ hasIcon }) => (hasIcon ? "27px" : "0px")};
-  color: ${({ size }) =>
-    size === "s" ? "#4B2995" : size === "m" ? "#4B2995" : "#FFFF"};
-  display: flex;
-  font-weight: ${({ size }) =>
-    size === "s" ? "200" : size === "m" ? "400" : "700"};
-  font-family: "Roboto", sans-serif;
-  font-size: ${({ size }) =>
-    size === "s" ? "0px" : size === "m" ? "14px" : "14px"};
+export const Title = styled.h1<ButtonProps>`
+  margin-left: ${({ hasIcon }) => (hasIcon ? '8px' : '0px')};
+  color: #574f4d;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
 `;
