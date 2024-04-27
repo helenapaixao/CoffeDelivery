@@ -7,14 +7,15 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   title?: string;
   hasIcon?: boolean;
   isSelected: boolean;
-  size?: number;
 };
 
-export const ButtonCart = ({ icon, onPress, title, size, isSelected }: ButtonProps) => {
+export const ButtonCart = ({ icon, onPress, title, isSelected }: ButtonProps) => {
   return (
     <Container isSelected={isSelected} onPress={onPress}>
       {icon && <IconContainer>{icon}</IconContainer>}
-      <Title hasIcon={!!icon} size={size}>
+      <Title  hasIcon={!!icon} size={
+        icon ? 16 : 20
+      }>
         {title}
       </Title>
     </Container>

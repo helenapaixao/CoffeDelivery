@@ -35,7 +35,7 @@ export const Card = ({ coffee }: Props) => {
         </Price>
 
         <Contador />
-        <ButtonCart onPress={() => null} icon={<FaShoppingCart />} />
+        <ButtonCart onPress={() => null} icon={<FaShoppingCart />} isSelected={false} />
       </Footer>
     </Container>
   );

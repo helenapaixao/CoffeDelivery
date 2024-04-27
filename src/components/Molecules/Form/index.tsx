@@ -131,7 +131,6 @@ export const Form = () => {
                 title="Dinheiro"
                 hasIcon={true}
                 isSelected={false}
-                size={20}
               />
             </PaymentOptions>
           </PaymentContainer>
