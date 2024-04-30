@@ -2,8 +2,8 @@ import { Tag } from "../Tag";
 import { Container, DivTag, SubTitle, Price, Title, Footer } from "./styles";
 import { Contador } from "../Contador";
 import { Image } from "../Image";
-import { ButtonCart } from "../../Molecules/ButtonCart";
 import { FaShoppingCart } from "react-icons/fa";
+import { ButtonCard } from "../../Molecules/ButtonCard";
 
 type Props = {
   coffee: {
@@ -35,7 +35,7 @@ export const Card = ({ coffee }: Props) => {
         </Price>
 
         <Contador />
-        <ButtonCart onPress={() => null} icon={<FaShoppingCart />} isSelected={false} />
+        <ButtonCard size="s" onPress={() => null} icon={<FaShoppingCart />}  />
       </Footer>
     </Container>
   );
