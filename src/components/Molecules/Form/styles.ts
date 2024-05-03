@@ -9,22 +9,6 @@ export const Container = styled.main`
   gap: 32px;
 `;
 
-export const InfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-
-  h2 {
-    ${mixins.fonts.titleXS};
-    color: ${({ theme }) => theme.colors["base-text"]};
-  }
-  > form {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-  }
-`;
-
 export const FormsContainer = styled.div`
   padding: 40px;
   border-radius: 6px;
@@ -83,11 +67,23 @@ export const PaymentOptions = styled.div`
     gap: 12px;
   }
 `;
+export const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 
-export const CartTotal = styled.div`
-  padding: 40px;
-  border-radius: 6px 36px;
-  background-color: ${({ theme }) => theme.colors["base-card"]};
-  width: 100%;
-  min-width: 448px;
+  h2 {
+    ${mixins.fonts.titleXS};
+    color: ${({ theme }) => theme.colors["base-text"]};
+  }
+  > form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
 `;
+export const AdressHeading = styled(Heading)`
+  svg {
+    color: ${({ theme }) => theme.colors['yellow-dark']};
+  }
+`

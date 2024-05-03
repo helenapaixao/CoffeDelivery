@@ -1,12 +1,13 @@
+import {useEffect, useState} from 'react';
 import {
   AddressForm,
   AndressContainer,
-  CartTotal,
   Container,
-  InfoContainer,
   PaymentContainer,
   PaymentHeading,
   PaymentOptions,
+  InfoContainer,
+  AdressHeading
 } from "./styles";
 import { Input } from "../../Atoms/Input";
 import {
@@ -17,30 +18,65 @@ import {
   Money,
 } from "@phosphor-icons/react";
 import { ButtonCart } from "../ButtonCart";
+import { Cart } from '../Cart';
 
 export const Form = () => {
+  const [cep, setCep] = useState('');
+  const [street, setStreet] = useState('');
+  const [number, setNumber] = useState('');
+  const [fullAddress, setFullAddress] = useState('');
+  const [neighborhood, setNeighborhood] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+
+
+
+  useEffect(() => {
+    fetch(`https://brasilapi.com.br/api/cep/v1/${cep}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setStreet(data.street);
+        setNeighborhood(data.neighborhood);
+        setCity(data.city);
+        setState(data.state);
+        console.log(data);
+      });
+  }
+  , []);
+
+
+  
+  
+
   return (
     <Container>
       <InfoContainer>
         <h2>Complete seu pedido</h2>
         <form>
           <AndressContainer>
+            <AdressHeading>
             <MapPin size={22} />
             <div>
               <span>Endereço de entrega</span>
               <p>Informe o endereço onde deseja receber seu pedido</p>
             </div>
+            </AdressHeading>
+           
             <AddressForm>
               <Input
                 placeholder="CEP"
                 type="number"
+                onChange={(e) => setCep(e.target.value)}
+                value={cep}
+               
+                
                 containerProps={{ style: { gridArea: "cep" } }}
-                /* error={Error.cep} */
-                /*    {...register('cep', { valueAsNumber: true })} */
               />
               <Input
                 placeholder="Rua"
                 type="text"
+                value={street}
+                onChange={(e) => setStreet(e.target.value)}
                 containerProps={{
                   style: {
                     gridArea: "street",
@@ -136,10 +172,8 @@ export const Form = () => {
           </PaymentContainer>
         </form>
       </InfoContainer>
-      <InfoContainer>
-        <h2>Cafés Selecionados</h2>
-        <CartTotal></CartTotal>
-      </InfoContainer>
+      <Cart/> 
+  
     </Container>
   );
 };

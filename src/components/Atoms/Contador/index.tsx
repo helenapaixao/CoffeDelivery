@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { Container, Button, Text } from "./styles";
 
 export const Contador = () => {
@@ -16,7 +16,7 @@ export const Contador = () => {
 
   return (
     <Container>
-      <Button onClick={decrementar}>-</Button>
+      <Button onClick={decrementar}> - </Button>
       <Text>{contadorValue}</Text>
       <Button onClick={incrementar}>+</Button>
     </Container>
