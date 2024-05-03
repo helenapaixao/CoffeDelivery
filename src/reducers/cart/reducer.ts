@@ -18,7 +18,7 @@ export interface CartState {
 
 export function cartReducer(state: CartState, action: Actions) {
   switch (action.type) {
-    case ActionsType.ADD_ITEM:
+   /*  case ActionsType.ADD_ITEM:
       return produce(state, (draft) => {
         const itemAlreadyAdded = draft.cart.find(
           (item) => item.id === action.payload.item
@@ -28,7 +28,7 @@ export function cartReducer(state: CartState, action: Actions) {
         } else {
           draft.cart.push(action.payload.item);
         }
-      });
+      }); */
 
     case ActionsType.REMOVE_ITEM:
       return produce(state, (draft) => {
@@ -57,7 +57,7 @@ export function cartReducer(state: CartState, action: Actions) {
           itemToDecrement.quantity -= 1;
         }
       });
-
+/* 
     case ActionsType.CHECKOUT_CART:
       return produce(state, (draft) => {
         const newOrder = {
@@ -68,7 +68,7 @@ export function cartReducer(state: CartState, action: Actions) {
         draft.orders.push(newOrder);
         draft.cart = [];
         action.payload.callback(`/orders/${newOrder.id}/sucess`);
-      });
+      }); */
 
     default:
       return state;

@@ -23,30 +23,9 @@ import { Cart } from '../Cart';
 export const Form = () => {
   const [cep, setCep] = useState('');
   const [street, setStreet] = useState('');
-  const [number, setNumber] = useState('');
-  const [fullAddress, setFullAddress] = useState('');
   const [neighborhood, setNeighborhood] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-
-
-
-  useEffect(() => {
-    fetch(`https://brasilapi.com.br/api/cep/v1/${cep}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setStreet(data.street);
-        setNeighborhood(data.neighborhood);
-        setCity(data.city);
-        setState(data.state);
-        console.log(data);
-      });
-  }
-  , []);
-
-
-  
-  
+  const [setCity] = useState('');
+  const [ setState] = useState('');
 
   return (
     <Container>

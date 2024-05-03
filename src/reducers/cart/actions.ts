@@ -55,12 +55,4 @@ export type Actions =
     } satisfies Actions
   }
 
-  export function checkoutCartAction(order: OrderInfo, callback: NavigateFunction,) {
-    return {
-      type: ActionsType.CHECKOUT_CART,
-      payload: {
-        order,
-        callback,
-      },
-    } satisfies Actions
-  }
+  
