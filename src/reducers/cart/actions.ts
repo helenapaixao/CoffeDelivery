@@ -1,3 +1,5 @@
+
+import { OrderInfo } from '../../components/Molecules/Form'
 import {NavigateFunction} from 'react-router-dom'
 import { Item } from './reducer'
 
@@ -16,10 +18,13 @@ export type Actions =
   | { type: ActionsType.REMOVE_ITEM, payload: { itemId: Item['id']} }
   | { type: ActionsType.INCREMENT_ITEM_QUANTITY, payload: { itemId: Item['id']} }
   | { type: ActionsType.DECREMENT_ITEM_QUANTITY, payload: { itemId: Item['id']} }
-  | { type: ActionsType.CHECKOUT_CART, payload: {navigate: NavigateFunction} }
+  | { type: ActionsType.CHECKOUT_CART, payload: { order: OrderInfo 
+    callback:NavigateFunction
+
+} }
 
 
-  export function AddItemAction(item: Item) {
+  export function addItemAction(item: Item) {
     return {
       type: ActionsType.ADD_ITEM,
       payload: {
@@ -28,7 +33,7 @@ export type Actions =
     } satisfies Actions
   }
 
-  export function RemoveItemAction(itemId: Item['id']) {
+  export function removeItemAction(itemId: Item['id']) {
     return {
       type: ActionsType.REMOVE_ITEM,
       payload: {
@@ -53,6 +58,20 @@ export type Actions =
         itemId
       },
     } satisfies Actions
+  }
+
+  export function checkoutCartAction(
+    order: OrderInfo,
+    callback: NavigateFunction,
+  ) {
+    return {
+      type: ActionsType.CHECKOUT_CART,
+      payload: {
+        order,
+        callback,
+      },
+      
+    }satisfies Actions
   }
 
   
