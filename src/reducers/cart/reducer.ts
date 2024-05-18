@@ -1,12 +1,13 @@
 import { produce } from "immer";
 import { ActionsType, Actions } from "./actions";
+import { OrderInfo } from "../../components/Molecules/Form";
 
 export interface Item {
   id: string;
   quantity: number;
 }
 
-export interface Order {
+export interface Order extends OrderInfo {
   id: number;
   items: Item[];
 }
@@ -18,17 +19,17 @@ export interface CartState {
 
 export function cartReducer(state: CartState, action: Actions) {
   switch (action.type) {
-   /*  case ActionsType.ADD_ITEM:
+    case ActionsType.ADD_ITEM:
       return produce(state, (draft) => {
         const itemAlreadyAdded = draft.cart.find(
-          (item) => item.id === action.payload.item
+          (item) => item.id === action.payload.item.id
         );
         if (itemAlreadyAdded) {
           itemAlreadyAdded.quantity += action.payload.item.quantity;
         } else {
           draft.cart.push(action.payload.item);
         }
-      }); */
+      }); 
 
     case ActionsType.REMOVE_ITEM:
       return produce(state, (draft) => {
@@ -57,7 +58,7 @@ export function cartReducer(state: CartState, action: Actions) {
           itemToDecrement.quantity -= 1;
         }
       });
-/* 
+
     case ActionsType.CHECKOUT_CART:
       return produce(state, (draft) => {
         const newOrder = {
@@ -68,7 +69,7 @@ export function cartReducer(state: CartState, action: Actions) {
         draft.orders.push(newOrder);
         draft.cart = [];
         action.payload.callback(`/orders/${newOrder.id}/sucess`);
-      }); */
+      }); 
 
     default:
       return state;
