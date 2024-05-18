@@ -35,7 +35,7 @@ export const Card = ({ coffee }: Props) => {
         </Price>
 
         <Contador />
-        <ButtonCard size="s" onPress={() => null} icon={<FaShoppingCart />}  />
+        <ButtonCard size="s" onPress={() => null} icon={<FaShoppingCart />} />
       </Footer>
     </Container>
   );
