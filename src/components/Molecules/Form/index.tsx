@@ -1,4 +1,8 @@
-import {useEffect, useState} from 'react';
+import { useState } from "react";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 import {
   AddressForm,
   AndressContainer,
@@ -7,7 +11,7 @@ import {
   PaymentHeading,
   PaymentOptions,
   InfoContainer,
-  AdressHeading
+  AdressHeading,
 } from "./styles";
 import { Input } from "../../Atoms/Input";
 import {
@@ -18,14 +22,49 @@ import {
   Money,
 } from "@phosphor-icons/react";
 import { ButtonCart } from "../ButtonCart";
-import { Cart } from '../Cart';
+import { Cart } from "../Cart";
+
+export type FormInputs = {
+  cep: number;
+  street: string;
+  number: string;
+  fullAddress: string;
+  neighborhood: string;
+  city: string;
+  state: string;
+  paymentMethod: "credit" | "debit" | "cash";
+};
+
+const newOrder = z.object({
+  cep: z.number({
+    invalid_type_error: "CEP deve ser um número",
+  }),
+
+  street: z.string().min(1, "Informe a rua"),
+  number: z.string().min(1, "Informe o número"),
+  fullAddress: z.string().min(1, "Informe o complemento"),
+  neighborhood: z.string().min(1, "Informe o bairro"),
+  city: z.string().min(1, "Informe a cidade"),
+  state: z.string().min(1, "Informe o estado"),
+  paymentMethod: z.enum(["credit", "debit", "cash"], {
+    invalid_type_error: "Informe um método de pagamento",
+  }),
+});
+
+export type OrderInfo = z.infer<typeof newOrder>;
+
+const shippingPrice = 3.5;
 
 export const Form = () => {
-  const [cep, setCep] = useState('');
-  const [street, setStreet] = useState('');
-  const [neighborhood, setNeighborhood] = useState('');
-  const [setCity] = useState('');
-  const [ setState] = useState('');
+  const {
+    register,
+    watch,
+    formState: { errors },
+  } = useForm<FormInputs>({
+    resolver: zodResolver(newOrder),
+  });
+
+  const selectedPaymentMethod = watch("paymentMethod");
 
   return (
     <Container>
@@ -34,81 +73,61 @@ export const Form = () => {
         <form>
           <AndressContainer>
             <AdressHeading>
-            <MapPin size={22} />
-            <div>
-              <span>Endereço de entrega</span>
-              <p>Informe o endereço onde deseja receber seu pedido</p>
-            </div>
+              <MapPin size={22} />
+              <div>
+                <span>Endereço de entrega</span>
+                <p>Informe o endereço onde deseja receber seu pedido</p>
+              </div>
             </AdressHeading>
-           
+
             <AddressForm>
               <Input
                 placeholder="CEP"
                 type="number"
-                onChange={(e) => setCep(e.target.value)}
-                value={cep}
-               
-                
+                error={errors.cep}
+                {...register("cep", { valueAsNumber: true })}
                 containerProps={{ style: { gridArea: "cep" } }}
               />
               <Input
                 placeholder="Rua"
+                containerProps={{ style: { gridArea: "street" } }}
                 type="text"
-                value={street}
-                onChange={(e) => setStreet(e.target.value)}
-                containerProps={{
-                  style: {
-                    gridArea: "street",
-                  },
-                }}
+                error={errors.street}
+                {...register("street")}
               />
-
               <Input
                 placeholder="Número"
-                type="text"
-                containerProps={{
-                  style: {
-                    gridArea: "number",
-                  },
-                }}
+                containerProps={{ style: { gridArea: "number" } }}
+                error={errors.number}
+                {...register("number")}
               />
               <Input
                 placeholder="Complemento"
-                type="text"
-                containerProps={{
-                  style: {
-                    gridArea: "fullAddress",
-                  },
-                }}
+                optional
+                containerProps={{ style: { gridArea: "fullAddress" } }}
+                error={errors.fullAddress}
+                {...register("fullAddress")}
               />
 
               <Input
                 placeholder="Bairro"
-                type="text"
-                containerProps={{
-                  style: {
-                    gridArea: "neighborhood",
-                  },
-                }}
+                containerProps={{ style: { gridArea: "neighborhood" } }}
+                error={errors.neighborhood}
+                {...register("neighborhood")}
               />
 
               <Input
                 placeholder="Cidade"
-                type="text"
-                containerProps={{
-                  style: {
-                    gridArea: "city",
-                  },
-                }}
+                containerProps={{ style: { gridArea: "city" } }}
+                error={errors.city}
+                {...register("city")}
               />
               <Input
                 placeholder="UF"
-                type="text"
-                containerProps={{
-                  style: {
-                    gridArea: "state",
-                  },
-                }}
+                maxLength={2}
+                containerProps={{ style: { gridArea: "state" } }}
+                error={errors.state}
+                {...register("state")}
               />
             </AddressForm>
           </AndressContainer>
@@ -125,16 +144,14 @@ export const Form = () => {
             </PaymentHeading>
             <PaymentOptions>
               <ButtonCart
-                isSelected={false}
-                onPress={() => {
-                  console.log("teste");
-                }}
+                isSelected={selectedPaymentMethod === "credit"}
+                onPress={() => {}}
                 hasIcon
                 icon={<CreditCard size={22} />}
                 title="Cartão de crédito"
               />
               <ButtonCart
-                isSelected={false}
+                isSelected={selectedPaymentMethod === "debit"}
                 onPress={() => {}}
                 hasIcon
                 title="cartão de débito"
@@ -145,14 +162,16 @@ export const Form = () => {
                 onPress={() => {}}
                 title="Dinheiro"
                 hasIcon={true}
-                isSelected={false}
+                isSelected={selectedPaymentMethod === "cash"}
               />
+              {errors.paymentMethod ? (
+                <span>{errors.paymentMethod.message}</span>
+              ) : null}
             </PaymentOptions>
           </PaymentContainer>
         </form>
       </InfoContainer>
-      <Cart/> 
-  
+      <Cart />
     </Container>
   );
 };
