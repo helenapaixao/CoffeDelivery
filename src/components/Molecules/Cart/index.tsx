@@ -1,35 +1,132 @@
-import { InfoContainer, CartTotal, Coffee, CoffeInfo } from "./styles";
+import {
+  InfoContainer,
+  CartTotal,
+  Coffee,
+  CoffeInfo,
+  CartTotalInfo,
+  CheckoutButton,
+} from "./styles";
 import { Contador } from "../../Atoms/Contador";
 import { Button } from "../../Atoms/Button";
 import { Trash } from "@phosphor-icons/react";
+import { useCart } from "../../../hooks/useCart";
+import { coffees } from "../../../../data.json";
+import { FormInputs } from "../Form";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 export const Cart = () => {
+  const {
+    cart,
+    addItem,
+    decrementItemQuantity,
+    incrementItemQuantity,
+    orders,
+    removeItem,
+  } = useCart();
+
+  if(!cart || !Array.isArray(cart)) {
+    return <div>Nenhum item no carrinho</div>
+  }
+
+  const coffeesInCart = cart.map((item) => {
+    const coffeeInfo = coffees.find((coffee) => coffee.id === item.id);
+
+    if (!coffeeInfo) {
+      throw new Error("Invalid coffee.");
+    }
+
+    return {
+      ...coffeeInfo,
+      quantity: item.quantity,
+    };
+  });
+
+  const totalItemsPrice = coffeesInCart.reduce((previousValue, currentItem) => {
+    return (previousValue += currentItem.price * currentItem.quantity);
+  }, 0);
+
+  function handleItemIncrement(itemId: string) {
+    incrementItemQuantity(itemId);
+  }
+
+  function handleItemDecrement(itemId: string) {
+    decrementItemQuantity(itemId);
+  }
+
+  function handleItemRemoval(itemId: string) {
+    removeItem(itemId);
+  }
+
+  const handleOrderCheckout: SubmitHandler<FormInputs> = (data) => {
+    if (cart.length === 0) {
+      return alert("é preciso adicionar itens ao carrinho");
+    }
+  };
+
   return (
     <>
       <InfoContainer>
         <h2>Cafés Selecionados</h2>
         <CartTotal>
+          {coffeesInCart.map((coffee) => (
           <Coffee>
             <div>
-              <img  src="https://avatars.githubusercontent.com/u/11083288?v=4"/>
+              <img src={coffee.image} alt={coffee.title} />
               <div>
-                <span>Expresso Tradicional</span>
+                <span>{coffee.title}</span>
                 <CoffeInfo>
-                  <Contador/>
+                  <Contador 
+                    initialValue={coffee.quantity}
+                    onIncrement={() => handleItemIncrement(coffee.id)}
+                    onDecrement={() => handleItemDecrement(coffee.id)}
+                  />
                   <Button
                     hasIcon
                     icon={<Trash />}
                     title="REMOVER"
                     size={"m"}
-                    onPress={() => null}
+                    onPress={() => handleItemRemoval(coffee.id)}
                   />
                 </CoffeInfo>
               </div>
             </div>
-            <aside>
-              R$ 19,00
-            </aside>
+            <aside>R$ {coffee.price?.toFixed(2)}</aside>
           </Coffee>
+          ))}
+          <CartTotalInfo>
+            <div>
+              <span>Total de itens</span>
+              <span>
+                {new Intl.NumberFormat("pt-br", {
+                  currency: "BRL",
+                  style: "currency",
+                }).format(19)}
+              </span>
+            </div>
+
+            <div>
+              <span>Entrega</span>
+              <span>
+                {new Intl.NumberFormat("pt-br", {
+                  currency: "BRL",
+                  style: "currency",
+                }).format(5)}
+              </span>
+            </div>
+
+            <div>
+              <span>Total</span>
+              <span>
+                {new Intl.NumberFormat("pt-br", {
+                  currency: "BRL",
+                  style: "currency",
+                }).format(totalItemsPrice)}
+              </span>
+            </div>
+            <CheckoutButton type="submit" form="order">
+              Confirmar pedido
+            </CheckoutButton>
+          </CartTotalInfo>
         </CartTotal>
       </InfoContainer>
     </>
