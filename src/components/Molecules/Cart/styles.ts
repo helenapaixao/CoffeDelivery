@@ -77,3 +77,49 @@ export const CoffeInfo = styled.div`
     }
   }
 `;
+
+export const CartTotalInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    span:first-child {
+      ${mixins.fonts.textS};
+    }
+
+    span:last-child {
+      ${mixins.fonts.textM};
+    }
+  }
+
+  div:last-child {
+    span {
+      ${mixins.fonts.textL};
+      font-weight: bold;
+    }
+  }
+`
+
+export const CheckoutButton = styled.button`
+  margin-top: 24px;
+  width: 100%;
+  padding: 12px;
+  text-transform: uppercase;
+
+  ${mixins.fonts.buttonG};
+  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.yellow};
+
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors['yellow-dark']};
+  }
+
+  border-radius: 6px;
+`
