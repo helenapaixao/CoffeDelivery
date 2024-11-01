@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -84,6 +83,7 @@ export const Form = () => {
       if (!response.ok) throw new Error("Erro ao buscar endereço");
 
       const data: AddressData = await response.json(); 
+      console.log("endereco", data)
 
       if (!data.erro) {
         setValue("street", data.logradouro);
@@ -132,9 +132,9 @@ export const Form = () => {
             <AddressForm>
               <Input
                 placeholder="CEP"
-                type="text"
+                type="number"
                 error={errors.cep}
-                {...register("cep")}
+                {...register('cep', { valueAsNumber: true })}
                 containerProps={{ style: { gridArea: "cep" } }}
               />
               <Input
