@@ -11,8 +11,8 @@ import { Button } from "../../Atoms/Button";
 import { Trash } from "@phosphor-icons/react";
 import { useCart } from "../../../hooks/useCart";
 import { coffees } from "../../../../data.json";
-import { FormInputs } from "../Form";
-import { SubmitHandler, useForm } from "react-hook-form";
+import type { FormInputs } from "../Form";
+import { type SubmitHandler, useForm } from "react-hook-form";
 
 export const Cart = () => {
   const {
@@ -69,29 +69,29 @@ export const Cart = () => {
         <h2>Cafés Selecionados</h2>
         <CartTotal>
           {coffeesInCart.map((coffee) => (
-          <Coffee>
-            <div>
-              <img src={coffee.image} alt={coffee.title} />
+            <Coffee key={coffee.id}>
               <div>
-                <span>{coffee.title}</span>
-                <CoffeInfo>
-                  <Contador 
-                    initialValue={coffee.quantity}
-                    onIncrement={() => handleItemIncrement(coffee.id)}
-                    onDecrement={() => handleItemDecrement(coffee.id)}
-                  />
-                  <Button
-                    hasIcon
-                    icon={<Trash />}
-                    title="REMOVER"
-                    size={"m"}
-                    onPress={() => handleItemRemoval(coffee.id)}
-                  />
-                </CoffeInfo>
+                <img src={coffee.image} alt={coffee.title} />
+                <div>
+                  <span>{coffee.title}</span>
+                  <CoffeInfo>
+                    <Contador 
+                      initialValue={coffee.quantity}
+                      onIncrement={() => handleItemIncrement(coffee.id)}
+                      onDecrement={() => handleItemDecrement(coffee.id)}
+                    />
+                    <Button
+                      hasIcon
+                      icon={<Trash />}
+                      title="REMOVER"
+                      size={"m"}
+                      onPress={() => handleItemRemoval(coffee.id)}
+                    />
+                  </CoffeInfo>
+                </div>
               </div>
-            </div>
-            <aside>R$ {coffee.price?.toFixed(2)}</aside>
-          </Coffee>
+              <aside>R$ {coffee.price?.toFixed(2)}</aside>
+            </Coffee>
           ))}
           <CartTotalInfo>
             <div>
