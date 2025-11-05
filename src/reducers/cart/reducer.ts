@@ -39,7 +39,7 @@ export function cartReducer(state: CartState, action: Actions) {
         draft.cart.splice(itemRemovedId, 1);
       });
 
-    case ActionsType.DECREMENT_ITEM_QUANTITY:
+    case ActionsType.INCREMENT_ITEM_QUANTITY:
       return produce(state, (draft) => {
         const itemToIncrement = draft.cart.find(
           (item) => item.id === action.payload.itemId
@@ -49,13 +49,23 @@ export function cartReducer(state: CartState, action: Actions) {
         }
       });
 
-    case ActionsType.INCREMENT_ITEM_QUANTITY:
+    case ActionsType.DECREMENT_ITEM_QUANTITY:
       return produce(state, (draft) => {
         const itemToDecrement = draft.cart.find(
           (item) => item.id === action.payload.itemId
         );
         if (itemToDecrement) {
-          itemToDecrement.quantity -= 1;
+          if (itemToDecrement.quantity > 1) {
+            itemToDecrement.quantity -= 1;
+          } else {
+            // Se a quantidade for 1, remove o item do carrinho
+            const itemIndex = draft.cart.findIndex(
+              (item) => item.id === action.payload.itemId
+            );
+            if (itemIndex >= 0) {
+              draft.cart.splice(itemIndex, 1);
+            }
+          }
         }
       });
 
@@ -68,7 +78,7 @@ export function cartReducer(state: CartState, action: Actions) {
         };
         draft.orders.push(newOrder);
         draft.cart = [];
-        action.payload.callback(`/orders/${newOrder.id}/sucess`);
+        action.payload.callback(`/order/${newOrder.id}/success`);
       }); 
 
     default:
