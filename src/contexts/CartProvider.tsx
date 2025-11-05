@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useEffect, useReducer } from "react";
+import { createContext, type ReactNode, useEffect, useReducer } from "react";
 
 import {
   addItemAction,
@@ -7,8 +7,8 @@ import {
   incrementItemQuantityAction,
   removeItemAction,
 } from "../reducers/cart/actions";
-import { cartReducer, Item, Order } from "../reducers/cart/reducer";
-import { OrderInfo } from "../components/Molecules/Form";
+import { cartReducer, type Item, type Order } from "../reducers/cart/reducer";
+import type { FormInputs as OrderInfo } from "../components/Molecules/Form";
 import { useNavigate } from "react-router-dom";
 
 interface CartContextType {
@@ -40,7 +40,16 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
       );
 
       if (storedStateAsJSON) {
-        return JSON.parse(storedStateAsJSON);
+        try {
+          const parsed = JSON.parse(storedStateAsJSON);
+          if (parsed && typeof parsed === "object") {
+            return {
+              cart: Array.isArray(parsed.cart) ? parsed.cart : [],
+              orders: Array.isArray(parsed.orders) ? parsed.orders : [],
+            };
+          }
+        } catch (_) {
+        }
       }
 
       return cartState;
