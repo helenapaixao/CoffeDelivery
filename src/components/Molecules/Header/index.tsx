@@ -1,10 +1,11 @@
-import { Image, Container, Aside } from "./styles";
+import { Image, Container, Aside, CartButtonWrapper, Badge } from "./styles";
 import { Button } from "../../Atoms/Button";
 import { BsCartFill } from "react-icons/bs";
 import { FaLocationDot } from "react-icons/fa6";
 import useUserLocation from "../../../hooks/useUserLocation";
 import Logo from "../../../assets/logo.svg";
 import { useCart } from "../../../hooks/useCart";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -12,10 +13,9 @@ import { useCart } from "../../../hooks/useCart";
 export const Header = () => {
   const { cart } = useCart();
   const userLocation = useUserLocation();
+  const navigate = useNavigate();
 
-  const handleCartItem = () => {
-    cart.length > 0 ? <span>{cart.length}</span> : null;
-  }
+  const totalItems = cart?.reduce((total, item) => total + item.quantity, 0) || 0;
 
   return (
     <Container>
@@ -35,15 +35,18 @@ export const Header = () => {
           title={userLocation ? userLocation : "Obtendo localização..."}
         />
 
-        <Button
-          hasIcon={true}
-          onPress={() => {
-            handleCartItem();
-          }}
-          
-          size="s"
-          icon={<BsCartFill />}
-        />
+        <CartButtonWrapper>
+          <Button
+            hasIcon={true}
+            onPress={() => {
+              navigate('/checkout');
+            }}
+            
+            size="s"
+            icon={<BsCartFill />}
+          />
+          {totalItems > 0 && <Badge>{totalItems}</Badge>}
+        </CartButtonWrapper>
       </Aside>
     </Container>
   );

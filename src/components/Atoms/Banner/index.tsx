@@ -3,6 +3,7 @@ import { useTheme } from "styled-components";
 import { Container, Content, Heading, Info } from "./styles";
 import { Timer } from "@phosphor-icons/react/dist/ssr";
 
+
 export const Banner = () => {
   const theme = useTheme();
   return (

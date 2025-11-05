@@ -9,7 +9,7 @@ export type ButtonProps = {
 
 export const ButtonCard = ({ size, icon, onPress }: ButtonProps) => {
   return (
-    <Container onPress={onPress} size={size}>
+    <Container onClick={onPress} size={size}>
       {icon && <IconContainer size={size}>{icon}</IconContainer>}
     </Container>
   );

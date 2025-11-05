@@ -11,16 +11,14 @@ import { Button } from "../../Atoms/Button";
 import { Trash } from "@phosphor-icons/react";
 import { useCart } from "../../../hooks/useCart";
 import { coffees } from "../../../../data.json";
-import type { FormInputs } from "../Form";
-import { type SubmitHandler, useForm } from "react-hook-form";
+ 
+import { formatBRL } from "../../../utils/format";
 
 export const Cart = () => {
-  const {
+  const { 
     cart,
-    addItem,
     decrementItemQuantity,
     incrementItemQuantity,
-    orders,
     removeItem,
   } = useCart();
 
@@ -42,7 +40,8 @@ export const Cart = () => {
   });
 
   const totalItemsPrice = coffeesInCart.reduce((previousValue, currentItem) => {
-    return (previousValue += currentItem.price * currentItem.quantity);
+    const totalPrice = previousValue + currentItem.price * currentItem.quantity;
+    return totalPrice;
   }, 0);
 
   function handleItemIncrement(itemId: string) {
@@ -57,11 +56,18 @@ export const Cart = () => {
     removeItem(itemId);
   }
 
-  const handleOrderCheckout: SubmitHandler<FormInputs> = (data) => {
-    if (cart.length === 0) {
-      return alert("é preciso adicionar itens ao carrinho");
-    }
-  };
+  if (cart.length === 0) {
+    return (
+      <InfoContainer>
+        <h2>Cafés Selecionados</h2>
+        <CartTotal>
+          <div style={{ padding: 24, textAlign: 'center', width: '100%' }}>
+            Seu carrinho está vazio.
+          </div>
+        </CartTotal>
+      </InfoContainer>
+    );
+  }
 
   return (
     <>
@@ -79,6 +85,7 @@ export const Cart = () => {
                       initialValue={coffee.quantity}
                       onIncrement={() => handleItemIncrement(coffee.id)}
                       onDecrement={() => handleItemDecrement(coffee.id)}
+                      min={1}
                     />
                     <Button
                       hasIcon
@@ -97,30 +104,21 @@ export const Cart = () => {
             <div>
               <span>Total de itens</span>
               <span>
-                {new Intl.NumberFormat("pt-br", {
-                  currency: "BRL",
-                  style: "currency",
-                }).format(19)}
+                {formatBRL(totalItemsPrice)}
               </span>
             </div>
 
             <div>
               <span>Entrega</span>
               <span>
-                {new Intl.NumberFormat("pt-br", {
-                  currency: "BRL",
-                  style: "currency",
-                }).format(5)}
+                {formatBRL(5)}
               </span>
             </div>
 
             <div>
               <span>Total</span>
               <span>
-                {new Intl.NumberFormat("pt-br", {
-                  currency: "BRL",
-                  style: "currency",
-                }).format(totalItemsPrice)}
+                {formatBRL(totalItemsPrice + 5)}
               </span>
             </div>
             <CheckoutButton type="submit" form="order">

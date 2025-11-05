@@ -1,29 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Button, Text } from "./styles";
 
 type ContadorProps = {
   initialValue?: number;
   onIncrement?: (value: number) => void;
   onDecrement?: (value: number) => void;
+  min?: number;
 };
 
 export const Contador = ({
-  initialValue, onIncrement, onDecrement
+  initialValue = 0, 
+  onIncrement, 
+  onDecrement,
+  min = 0
 }: ContadorProps) => {
-  const [contadorValue, setContadorValue] = useState(initialValue || 0);
+  const [contadorValue, setContadorValue] = useState(initialValue);
+
+  useEffect(() => {
+    setContadorValue(initialValue);
+  }, [initialValue]);
 
   function incrementar() {
-    setContadorValue(contadorValue + 1);
+    const newValue = contadorValue + 1;
+    setContadorValue(newValue);
     if(onIncrement) {
-      onIncrement(contadorValue + 1)
+      onIncrement(newValue);
     }
   }
 
   const decrementar = () => {
-    if (contadorValue > 0) {
-      setContadorValue(contadorValue - 1);
+    if (contadorValue > min) {
+      const newValue = contadorValue - 1;
+      setContadorValue(newValue);
       if (onDecrement) {
-        onDecrement(contadorValue - 1);
+        onDecrement(newValue);
       }
     }
   };

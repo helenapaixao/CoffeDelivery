@@ -10,7 +10,7 @@ export type ButtonProps = {
 
 export const Button = ({ size, icon, onPress, title }: ButtonProps) => {
   return (
-    <Container onPress={onPress} size={size}>
+    <Container onClick={onPress} onPress={onPress} size={size}>
       {icon && <IconContainer size={size}>{icon}</IconContainer>}
       <Title size={size} hasIcon={!!icon}>
         {title}
