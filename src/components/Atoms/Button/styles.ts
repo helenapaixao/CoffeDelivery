@@ -4,14 +4,20 @@ import { ButtonProps } from ".";
 export const Container = styled.button<ButtonProps>`
   border-radius: 6px;
   height: 38px;
-  width: ${({ size }) =>
+  min-width: ${({ size }) =>
     size === "s" ? "38px" : size === "m" ? "210px" : "368px"};
+  max-width: ${({ size }) =>
+    size === "s" ? "38px" : size === "m" ? "300px" : "368px"};
+  width: ${({ size }) =>
+    size === "s" ? "38px" : size === "m" ? "auto" : "368px"};
   border: none;
   outline: none;
   background-color: ${({ size }) =>
     size === "s" ? "#F1E9C9" : size === "m" ? "#EBE5F9" : "#DBAC2C"};
   display: flex;
   align-items: center;
+  padding: 0 12px;
+  cursor: pointer;
 `;
 
 export const IconContainer = styled.div<{ size: string }>`
@@ -28,7 +34,7 @@ export const IconContainer = styled.div<{ size: string }>`
 `;
 
 export const Title = styled.h1<{ size: string; hasIcon: boolean }>`
-  margin-left: ${({ hasIcon }) => (hasIcon ? "10px" : "0")};
+  margin-left: ${({ hasIcon }) => (hasIcon ? "8px" : "0")};
   color: ${({ size }) =>
     size === "s" ? "#4B2995" : size === "m" ? "#4B2995" : "#FFFF"};
   font-weight: ${({ size }) =>
@@ -36,4 +42,9 @@ export const Title = styled.h1<{ size: string; hasIcon: boolean }>`
   font-family: "Roboto", sans-serif;
   font-size: ${({ size }) =>
     size === "s" ? "0px" : size === "m" ? "14px" : "14px"};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  text-align: left;
 `;
