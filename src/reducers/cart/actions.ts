@@ -18,10 +18,7 @@ export type Actions =
   | { type: ActionsType.REMOVE_ITEM, payload: { itemId: Item['id']} }
   | { type: ActionsType.INCREMENT_ITEM_QUANTITY, payload: { itemId: Item['id']} }
   | { type: ActionsType.DECREMENT_ITEM_QUANTITY, payload: { itemId: Item['id']} }
-  | { type: ActionsType.CHECKOUT_CART, payload: { order: OrderInfo 
-    callback:NavigateFunction
-
-} }
+  | { type: ActionsType.CHECKOUT_CART, payload: { order: OrderInfo; callback: NavigateFunction } }
 
 
   export function addItemAction(item: Item) {

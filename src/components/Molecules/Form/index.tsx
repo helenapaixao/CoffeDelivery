@@ -36,6 +36,8 @@ export type FormInputs = {
   paymentMethod: "credit" | "debit" | "cash";
 };
 
+export type OrderInfo = FormInputs;
+
 const newOrder = z.object({
   cep: z
     .string()
