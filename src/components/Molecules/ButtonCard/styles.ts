@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ButtonProps } from ".";
 
-export const Container = styled.button<ButtonProps>`
+export const Container = styled.button<Omit<ButtonProps, 'onPress'>>`
   border-radius: 6px;
   height: 38px;
   width: ${({ size }) =>

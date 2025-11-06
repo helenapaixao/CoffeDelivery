@@ -11,7 +11,7 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 export const ButtonCart = ({ icon, onPress, title, isSelected }: ButtonProps) => {
   return (
-    <Container isSelected={isSelected} onClick={onPress}>
+    <Container isSelected={isSelected} onClick={onPress} title={title} hasIcon={!!icon}>
       {icon && <IconContainer>{icon}</IconContainer>}
       <Title  hasIcon={!!icon} size={
         icon ? 16 : 20

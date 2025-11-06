@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { ButtonProps } from ".";
 import { mixins } from "../../../styles/mixins";
 
-export const Container = styled.button<ButtonProps>`
+export const Container = styled.button<Omit<ButtonProps, 'onPress'>>`
   justify-content: center;
   position: relative;
   width: 100%;
