@@ -6,6 +6,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { ButtonCard } from "../../Molecules/ButtonCard";
 import { useState } from "react";
 import { useCart } from "../../../hooks/useCart";
+import { useToast } from "../../../contexts/ToastProvider";
 import type { Coffee } from "../../../@types/coffee";
 import { formatBRL } from "../../../utils/format";
 
@@ -15,12 +16,14 @@ type Props = {
 
 export const Card = ({ coffee }: Props) => {
   const { addItem } = useCart();
+  const { showToast } = useToast();
   const [quantity, setQuantity] = useState(0);
 
   function handleAddToCart() {
     if (quantity > 0) {
       addItem({ id: coffee.id, quantity });
-      setQuantity(0); // Resetar quantidade após adicionar
+      setQuantity(0);
+      showToast("Item adicionado ao carrinho!");
     }
   }
 
